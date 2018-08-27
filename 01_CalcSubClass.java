@@ -39,7 +39,7 @@ public class CalcSubClass extends JFrame
         numDisplay = new JTextField();
         numDisplay.setPreferredSize(new Dimension(130, 30));
         numDisplay.setEditable(false);
-        numDisplay.setBackground(Color.white);
+        numDisplay.setBackground(Color.cyan);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
@@ -108,7 +108,20 @@ public class CalcSubClass extends JFrame
         gbc.gridy = 4;
         add(negateNumber, gbc);
         negateNumber.addActionListener(new MyButtonListener());
-       
+        
+        /* Windows L/F seems OK */
+        // String lnfName = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+        String lnfName = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+        try
+        {
+            UIManager.setLookAndFeel(lnfName);
+            SwingUtilities.updateComponentTreeUI(this);
+        }
+        catch (Exception ex)
+        {
+            System.err.println(ex.toString());
+        }
+        
     }
 
     private class MyButtonListener implements ActionListener
