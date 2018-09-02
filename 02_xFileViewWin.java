@@ -93,11 +93,6 @@ public class xFileViewWin extends JFrame {
             System.out.println("cant highlight");
         }
         
-        JScrollPane jsp = new JScrollPane(ta);
-        this.getContentPane().add(jsp, BorderLayout.CENTER);
-        
-        File f = new File(dirName + fileName);
-        
         try {
             BufferedReader reader =
                 new BufferedReader(new FileReader(dirName + fileName));
