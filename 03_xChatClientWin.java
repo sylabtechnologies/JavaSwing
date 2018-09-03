@@ -70,7 +70,7 @@ public class xChatClientWin extends JFrame {
 
         JScrollPane scroll = new JScrollPane(topdisplay);
 
-        topdisplay.setBorder(BorderFactory.createLoweredBevelBorder());
+        topdisplay.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
         scroll.setBorder(null);
 
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -82,7 +82,7 @@ public class xChatClientWin extends JFrame {
         bottomdisplay.setFont(bottomdisplay.getFont().deriveFont(16f));
         bottomdisplay.setLineWrap(true);        
 
-        bottomdisplay.setBorder(BorderFactory.createLoweredBevelBorder());
+        bottomdisplay.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
         
         panel.add(bottomdisplay);
         
