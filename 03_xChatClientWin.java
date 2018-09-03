@@ -16,6 +16,12 @@ public class xChatClientWin extends JFrame {
     JTextArea topdisplay;
     JTextArea bottomdisplay;
     
+    JButton copyButton;
+    JButton printButton;
+    JButton exitButton;
+    JButton connectButton;
+    JButton disconnectButton;
+    
     private int lastX, lastY;
     
     xChatClientWin() {
@@ -63,6 +69,10 @@ public class xChatClientWin extends JFrame {
         topdisplay.append("test 1\n");
 
         JScrollPane scroll = new JScrollPane(topdisplay);
+
+        topdisplay.setBorder(BorderFactory.createLoweredBevelBorder());
+        scroll.setBorder(null);
+
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         panel.add(scroll);
         
@@ -71,7 +81,9 @@ public class xChatClientWin extends JFrame {
         bottomdisplay.setForeground(Color.white);
         bottomdisplay.setFont(bottomdisplay.getFont().deriveFont(16f));
         bottomdisplay.setLineWrap(true);        
-     
+
+        bottomdisplay.setBorder(BorderFactory.createLoweredBevelBorder());
+        
         panel.add(bottomdisplay);
         
         return panel;
@@ -81,20 +93,22 @@ public class xChatClientWin extends JFrame {
     private JToolBar createTopBar() {
         
         JToolBar tb =  new JToolBar(); tb.setFloatable(false);
+        tb.setBorder(BorderFactory.createRaisedBevelBorder());
 
         toplabel = new JTextField(5);
         toplabel.setFont(toplabel.getFont().deriveFont(16f));
         toplabel.setEditable(false);
         toplabel.setHorizontalAlignment(JTextField.CENTER);
+        toplabel.setBorder(null);
         tb.add(toplabel);
         
-        JButton copyButton = new JButton(new ImageIcon("copy.gif"));
+        copyButton = new JButton(new ImageIcon("copy.gif"));
         tb.add(copyButton);
         
-        JButton printButton = new JButton(new ImageIcon("print.gif"));
+        printButton = new JButton(new ImageIcon("print.gif"));
         tb.add(printButton);
         
-        JButton exitButton = new JButton(new ImageIcon("exit.gif"));
+        exitButton = new JButton(new ImageIcon("exit.gif"));
         exitButton.addActionListener(new CloseListener());
         tb.add(exitButton);
         
@@ -104,12 +118,13 @@ public class xChatClientWin extends JFrame {
     private JToolBar createBottomBar() {
 
         JToolBar tb =  new JToolBar(); tb.setFloatable(false);
+        tb.setBorder(BorderFactory.createRaisedBevelBorder());
         
-        JButton connectButton = new JButton(new ImageIcon("connect.gif"));
+        connectButton = new JButton(new ImageIcon("connect.gif"));
         tb.add(connectButton);
         connectButton.addActionListener(new SendEvent());
         
-        JButton disconnectButton = new JButton(new ImageIcon("disconnect.gif"));
+        disconnectButton = new JButton(new ImageIcon("disconnect.gif"));
         tb.add(Box.createHorizontalGlue());
         disconnectButton.addActionListener(new DisconnectEvent());
         tb.add(disconnectButton);
