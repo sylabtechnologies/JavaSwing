@@ -1,6 +1,3 @@
-// need exceptions
-// hierarchy of caret and custom highlighter
-// exceptions
 
 package xfileview;
 
@@ -15,7 +12,7 @@ public class xFileViewWin extends JFrame {
 
     private String dirName;
     private String fileName;
-    private int lastX, lastY;
+    private int lastX, lastY, pressedX, pressedY;
     
     xFileViewWin(String dir, String fname)
     {
@@ -30,11 +27,12 @@ public class xFileViewWin extends JFrame {
         
         JToolBar topbar = createToolBar();
         topbar.addMouseListener(new MoveToolBar());
+        topbar.addMouseMotionListener(new DragToolBar());
         myPanel.add(topbar, BorderLayout.NORTH);
         
         JTextArea mytext = makeTextArea();
         myPanel.add(mytext, BorderLayout.CENTER);
-        
+
         this.add(myPanel);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,17 +53,18 @@ public class xFileViewWin extends JFrame {
     private JToolBar createToolBar() {
         
         JToolBar tb =  new JToolBar(); tb.setFloatable(false);
+        tb.setBorder(BorderFactory.createRaisedBevelBorder());
         
-        JButton copyButton = new JButton(new ImageIcon("copy.gif"));
+        JButton copyButton = new JButton(new ImageIcon("images/copy.gif"));
         tb.add(copyButton);
         
-        JButton saveButton = new JButton(new ImageIcon("save.gif"));
+        JButton saveButton = new JButton(new ImageIcon("images/save.gif"));
         tb.add(saveButton);
         
-        JButton printButton = new JButton(new ImageIcon("print.gif"));
+        JButton printButton = new JButton(new ImageIcon("images/print.gif"));
         tb.add(printButton);
         
-        JButton exitButton = new JButton(new ImageIcon("exit.gif"));
+        JButton exitButton = new JButton(new ImageIcon("images/exit.gif"));
         exitButton.addActionListener(new CloseListener());
         tb.add(Box.createHorizontalGlue());
         tb.add(exitButton);
@@ -121,17 +120,40 @@ public class xFileViewWin extends JFrame {
         }
     }
 
+    class DragToolBar implements MouseMotionListener {
+        @Override
+        public void mouseMoved(MouseEvent m_event)
+        {
+            
+        }
+       
+        @Override
+        public void mouseDragged(MouseEvent m_event)
+        {
+        int newX = xFileViewWin.super.getLocation().x + m_event.getX()- pressedX;
+        int newY = xFileViewWin.super.getLocation().y + m_event.getY()- pressedY;
+
+            xFileViewWin.super.setLocation(newX, newY);
+
+        }
+    }
+   
+    
     class MoveToolBar implements MouseListener {
         @Override
         public void mousePressed(MouseEvent m_event)
         {
             lastX = m_event.getXOnScreen();
             lastY = m_event.getYOnScreen();
+            
+            pressedX = m_event.getX();
+            pressedY = m_event.getY();
         }
         
         @Override
         public void mouseReleased(MouseEvent m_event)
         {
+            /*
             int newX = m_event.getXOnScreen() - lastX;
             int newY = m_event.getYOnScreen() - lastY;
 
@@ -139,6 +161,7 @@ public class xFileViewWin extends JFrame {
             newY += xFileViewWin.super.getLocationOnScreen().y;
             
             xFileViewWin.super.setLocation(newX, newY);
+            */
         }
         
         @Override
