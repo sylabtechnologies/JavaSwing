@@ -1,14 +1,4 @@
 // https://stackoverflow.com/questions/3732109/simple-http-server-in-java-using-only-java-se-api
-// KUL:
-// https://www.mkyong.com/java/java-whois-example/
-
-// ### OK THINK OF IT LIKE VECTOR.PUSH_BACK
-// ### THEN COPY(RBEGIN/REND, BACK_INSERTER
-// ### ALL INTO ATOMS
-
-// tests:
-// https://stackoverflow.com/questions/12010631/command-line-for-looking-at-specific-port
-// https://www.computerweekly.com/tip/How-to-use-a-netstat-command-in-Windows-to-watch-open-ports
 // 
 
 import java.io.IOException;

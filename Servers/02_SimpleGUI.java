@@ -1,20 +1,5 @@
 /**
- * just p355
- * 
- * *** just see messaging! **
- * 
- * 1. content pane is exactly the pane for content, there are others
- * 
- * 2. OK TOTALLY CLEAR - THE PARADIGM IS TO CREATE INSTANCE AND RUN IT
- * BUTTON MUST BE INSTANCE VARIABLE
- * 
- * *** IT IS REALLY #NICE - how many will be instance specifit, classic!
- * 
- * **** totally can lanuch independently  ui & uiStart #N
- * 
- * IT IS APPARENT STRATEGY W/ IMPLEMENTING ACTION LISTENER!
- * => 3. check messaging! *** ALL JUST MESSAGING AND ABSTRACTION **
- * 
+ * p355
  * 
  */
 
